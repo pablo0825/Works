@@ -1,0 +1,79 @@
+<!-- views/history.ejs -->
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>文件歷程</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 20px auto;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        text-align: center;
+      }
+      th {
+        background-color: #f4f4f4;
+      }
+      h1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>文件歷程</h1>
+    <h2>文件編號：<%= document.fileNumber %></h2>
+
+    <h3>刷入紀錄</h3>
+    <% if (document.flashHistory && document.flashHistory.length > 0) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>時間</th>
+          <th>單位</th>
+          <th>備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% document.flashHistory.forEach(function(record) { %>
+        <tr>
+          <td><%= new Date(record.time).toLocaleString() %></td>
+          <td><%= record.unit %></td>
+          <td><%= record.remark %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <% } else { %>
+    <p style="text-align: center">暫無刷入紀錄</p>
+    <% } %>
+
+    <h3>刷出紀錄</h3>
+    <% if (document.spawnHistory && document.spawnHistory.length > 0) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>時間</th>
+          <th>備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% document.spawnHistory.forEach(function(record) { %>
+        <tr>
+          <td><%= new Date(record.time).toLocaleString() %></td>
+          <td><%= record.remark %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <% } else { %>
+    <p style="text-align: center">暫無刷出紀錄</p>
+    <% } %>
+
+    <p style="text-align: center"><a href="/">返回首頁</a></p>
+  </body>
+</html>

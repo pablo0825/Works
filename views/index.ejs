@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>公文控管系統</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 50%;
+        margin: 20px auto;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        text-align: center;
+      }
+      th {
+        background-color: #f4f4f4;
+      }
+      h1 {
+        text-align: center;
+      }
+      #searchInput {
+        width: 50%;
+        padding: 8px;
+        margin: 20px auto;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <% title = "部落格首頁" %> <%- include('partials/header.ejs') %>
+    <table id="documentTable">
+      <thead>
+        <tr>
+          <th>顯示流程</th>
+          <th>文件編號</th>
+          <th>啟動人</th>
+          <th>主旨</th>
+          <th>備註</th>
+          <th>目前單位</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% documents.forEach(function(document) { %>
+        <tr>
+          <td>
+            <button>
+              <a href="/documents/<%= document._id %>/history">流程</a>
+            </button>
+          </td>
+          <td><%= document.fileNumber %></td>
+          <td><%= document.user %></td>
+          <td><%= document.title %></td>
+          <td><%= document.remark %></td>
+          <td><%= document.currentUnit %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>
+</html>

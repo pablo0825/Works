@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>公文控管系統</title>
+  </head>
+  <body>
+    <% title = "新增文章" %> <%- include('partials/header.ejs') %>
+    <form action="/documents" method="post">
+      <label for="fileNumber">文件編號：</label>
+      <input
+        type="text"
+        id="fileNumber"
+        name="fileNumber"
+        value="<%= document.fileNumber %>"
+        required
+      />
+
+      <label for="title">主旨：</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        value="<%= document.title %>"
+        required
+      />
+      <label for="remark">備註：</label>
+      <input
+        type="text"
+        id="remark"
+        name="remark"
+        value="<%= document.remark %>"
+      />
+      <label for="user">啟動人：</label>
+      <input
+        type="text"
+        id="user"
+        name="user"
+        value="<%= document.user %>"
+        required
+      />
+      <label for="currentUnit">啟動單位：</label>
+      <input
+        type="text"
+        id="currentUnit"
+        name="currentUnit"
+        value="<%= document.currentUnit %>"
+        required
+      />
+      <button type="submit">提交</button>
+    </form>
+  </body>
+</html>
